@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Atul Rao – AI Career Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            padding: 30px;
+        }
+        #chat-container {
+            width: 100%;
+            max-width: 600px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        #chat {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            min-height: 400px;
+        }
+        .message {
+            padding: 12px 18px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            max-width: 80%;
+            line-height: 1.4;
+        }
+        .user {
+            background-color: #d1e7ff;
+            align-self: flex-end;
+            text-align: right;
+        }
+        .bot {
+            background-color: #e2f0d9;
+            align-self: flex-start;
+            text-align: left;
+        }
+        #input-container {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            background: #fafafa;
+        }
+        #question {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4a90e2;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            margin-left: 10px;
+            font-size: 16px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background-color: #357abd;
+        }
+        h2 {
+            text-align: center;
+            padding: 20px 0;
+            background: #4a90e2;
+            color: #fff;
+            margin: 0;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h2>Atul Rao – AI Career Assistant</h2>
+        <div id="chat"></div>
+        <div id="input-container">
+            <input type="text" id="question" placeholder="Ask me something...">
+            <button onclick="askQuestion()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        async function askQuestion() {
+            const questionInput = document.getElementById('question');
+            const question = questionInput.value.trim();
+            if (!question) return;
+
+            const chatDiv = document.getElementById('chat');
+            chatDiv.innerHTML += `<div class="message user">${question}</div>`;
+            questionInput.value = '';
+            chatDiv.scrollTop = chatDiv.scrollHeight;
+
+            try {
+                const response = await fetch('/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ question })
+                });
+
+                const data = await response.json();
+                chatDiv.innerHTML += `<div class="message bot">${data.answer || data.error}</div>`;
+                chatDiv.scrollTop = chatDiv.scrollHeight;
+            } catch (err) {
+                chatDiv.innerHTML += `<div class="message bot">Error connecting to server.</div>`;
+            }
+        }
+
+        // Optional: submit on Enter
+        document.getElementById('question').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') askQuestion();
+        });
+    </script>
+</body>
+</html>
