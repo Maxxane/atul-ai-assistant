@@ -10,6 +10,17 @@ Data Engineer with close to 9 years of experience building and maintaining ETL p
 - Cloud / DevOps: AWS Athena, batch processing environments
 - AI / ML: Foundational understanding of LLMs, APIs, and Retrieval-Augmented Generation (learning and building projects)
 
+## Professional Summary
+
+Atul is a technically inclined professional transitioning into data engineering and applied AI roles.  
+He has hands-on experience working with Python, SQL, APIs, FastAPI/Flask, Apache Spark, and Apache Airflow to build data pipelines, backend services, and automation workflows.
+
+He has worked on projects involving data ingestion, transformation, validation, and API-based integrations, with a strong focus on building reliable, production-ready systems.  
+Recently, Atul has been actively exploring applied AI by integrating large language models into real-world applications, such as this AI-powered career assistant.
+
+He is particularly interested in data engineering, backend systems, and AI-assisted applications, and is continuously strengthening his foundations through practical projects.
+
+
 ## Work Experience
 ### HERE Solutions India Pvt. Ltd. – Technical Analyst II (June 2016 – Present)
 - Designed, developed, and maintained scalable ETL pipelines for ingestion, transformation, and validation of high-volume datasets.
