@@ -8,7 +8,7 @@ import os
 
 app = FastAPI(title="Atul Rao – AI Career Assistant")
 # Add at the end, before uvicorn runs
-app.mount("/", StaticFiles(directory=".", html=True), name="static")
+app.mount("/ui", StaticFiles(directory=".", html=True), name="static")
 
 
 load_dotenv()
