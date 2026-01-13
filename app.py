@@ -5,10 +5,6 @@ from dotenv import load_dotenv
 from fastapi.staticfiles import StaticFiles
 import os
 
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run(app, host="0.0.0.0", port=port)
 
 app = FastAPI(title="Atul Rao – AI Career Assistant")
 # Add at the end, before uvicorn runs
